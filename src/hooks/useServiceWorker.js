@@ -31,9 +31,9 @@ const useServiceWorker = (setProcess) => {
               })
               .then((subscription) => {
                 console.log("Suscripción creada:", subscription);
-                alert("suscripcion creada");
+                // alert("suscripcion creada");
                 setProcess(true);
-                fetch("http://localhost:5000/subscribe", {
+                fetch("https://arrownotifiesserver.onrender.com/subscribe", {
                   method: "POST",
                   body: JSON.stringify(subscription),
                   headers: {

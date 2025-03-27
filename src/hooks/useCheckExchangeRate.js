@@ -14,11 +14,10 @@ const useCheckExchangeRate = (process) => {
 
           const data = await response.json();
           const gbpToEur = data.rates.EUR; // Obtiene la tasa de la libra
-          console.log("🚀 ~ checkExchangeRate ~ gbpToEur:", gbpToEur);
 
-          if (gbpToEur >= 1.22) {
+          if (gbpToEur >= 1.21) {
             sendNotification(`La libra subió a €${gbpToEur}`);
-          } else if (gbpToEur <= 1.16) {
+          } else if (gbpToEur <= 1.18) {
             sendNotification(`La libra bajó a €${gbpToEur}`);
           }
         } catch (error) {
@@ -27,8 +26,8 @@ const useCheckExchangeRate = (process) => {
         }
       };
 
-      // Revisar cada 5 minutos
-      const interval = setInterval(checkExchangeRate, 300000);
+      // Every hour
+      const interval = setInterval(checkExchangeRate, 3600000);
       checkExchangeRate();
 
       return () => clearInterval(interval);
